@@ -154,11 +154,11 @@ syntax on
 let python_highlight_all=1
 
 try
-    colorscheme monokai
+    colorscheme gruvbox
 catch
 endtry
 
-" set background=dark
+set background=dark
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -238,42 +238,6 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" Close the current buffer
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
-
-" Close all the buffers
-map <leader>ba :bufdo bd<cr>
-
-map <leader>l :bnext<cr>
-map <leader>h :bprevious<cr>
-
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
-"
-" Let 'tl' toggle between this and the last accessed tab
-" let g:lasttab = 1
-" nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-" au TabLeave * let g:lasttab = tabpagenr()
-
-
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
-" Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
-
-"Specify the behavior when switching between buffers 
-try
- set switchbuf=useopen,usetab,newtab
- "set stal=2
-catch
-endtry
-
 " Return to last edit position when opening files (You want this!)
 " autocmd BufReadPost *
       \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -319,67 +283,6 @@ func! DeleteTrailingWS()
   exe "normal `z"
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Ag searching and cope displaying
-"    requires ag.vim - it's much better than vimgrep/grep
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" When you press gv you Ag after the selected text
-vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
-
-" Open Ag and put the cursor in the right position
-map <leader>g :Ag 
-
-" When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
-
-" Do :help cope if you are unsure what cope is. It's super useful!
-"
-" When you search with Ag, display your results in cope by doing:
-"   <leader>cc
-"
-" To go to the next search result do:
-"   <leader>n
-"
-" To go to the previous search results do:
-"   <leader>p
-"
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
-
-" Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Misc
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-" Quickly open a buffer for scribble
-map <leader>q :e ~/buffer<cr>
-
-" Quickly open a markdown buffer for scribble
-map <leader>x :e ~/buffer.md<cr>
-
-" Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
-
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -442,14 +345,13 @@ function! <SID>BufcloseCloseIt()
    endif
 endfunction
 
-" Make VIM remember position in file after reopen
+"" Make VIM remember position in file after reopen
 if has("autocmd")
    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
 "Enable mouse use in all modes
 "set mouse=a
-
 set mouse=r
 
 " Set this to the name of your terminal that supports mouse codes.
@@ -462,18 +364,6 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
-
-" resize windows using arrow keys
-" nnoremap <Left> :vertical resize +2<CR>
-" nnoremap <Right> :vertical resize -2<CR>
-" nnoremap <Up> :resize -2<CR>
-" nnoremap <Down> :resize +2<CR>
-
-" " disable arrow keys in insert mode
-" inoremap <up> <nop>
-" inoremap <down> <nop>
-" inoremap <left> <nop>
-" inoremap <right> <nop>
 
 " map : to ;
 nnoremap ; :
@@ -500,10 +390,6 @@ set number
 
 " gets rid of the distracting highlighting
 nnoremap <leader><space> :noh<cr>
-
-" paranthesis matching to tab
-" nnoremap <tab> %
-" vnoremap <tab> %
 
 " open vertical split and switch over to it
 nnoremap <leader>w <C-w>v<C-w>l
@@ -567,8 +453,6 @@ set autochdir
 
 let g:ctrlp_working_path_mode = 0
 
-" Visual selection automatically copied to the clipboard
-" set go+=a
 
 " Keep search pattern at the center of the screen.
 nnoremap <silent> n nzz
@@ -596,12 +480,9 @@ imap <C-v> <ESC>"+pa
 " opens vimrc in new vertical split
 nmap <leader>p :vsplit ~/nvim/my_configs.vim<CR>
 
-" hi MatchParen cterm=none ctermbg=green ctermfg=blue
-" hi Cursor guifg=#121212 guibg=#afd700
-"
 
-highlight MatchParen gui=bold guibg=NONE guifg=lightblue cterm=bold ctermbg=NONE
-highlight MatchParen gui=bold guibg=#cfbfaf guifg=#666666 cterm=bold ctermbg=NONE
+"highlight MatchParen gui=bold guibg=NONE guifg=lightblue cterm=bold ctermbg=NONE
+"highlight MatchParen gui=bold guibg=#cfbfaf guifg=#666666 cterm=bold ctermbg=NONE
 
 " Damian Conway's Die Blinkënmatchen: highlight matches
 " nnoremap <silent> n n:call HLNext(0.1)<cr>
@@ -638,10 +519,6 @@ set splitright
 
 set mouse-=a
 
-" easy motion map
-"nmap <leader><leader>w f
-" map <SPACE> <Plug>(easymotion-s2)
-map f <Plug>(easymotion-bd-w)
 
 " Reselect visual block after indent/outdent
 vnoremap < <gv
@@ -695,6 +572,9 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|tox|ico|git|hg|svn))$'
 let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
 let g:ctrlp_use_caching = 1
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
 
 " The Silver Searcher
 if executable('ag')
@@ -709,30 +589,6 @@ let g:ctrlp_map = '<leader>e'
 let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 
-" snippets
-let g:UltiSnipsExpandTrigger="<c-space>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-let g:UltiSnipsEditSplit="vertical"
-
-" syntastic
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_style_error_symbol = '✗'
-let g:syntastic_style_warning_symbol = '⚠'
-let g:syntastic_auto_loc_list=1
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_mode_map = {
-    \ "mode": "passive",
-    \ "active_filetypes": ["python"],
-    \ "passive_filetypes": [] }
-
-
-" Tagbar
-nmap <silent> <F4> :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
-
 " IndentLine
 let g:indentLine_enabled = 1
 let g:indentLine_concealcursor = 0
@@ -746,30 +602,6 @@ augroup vimrc-python
       \ formatoptions+=croq softtabstop=4 smartindent
       \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 augroup END
-
-" jedi-vim
-let g:jedi#popup_on_dot = 1
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_definitions_command = "<leader>d"
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>n"
-let g:jedi#rename_command = "<leader>r"
-let g:jedi#show_call_signatures = "0"
-" let g:jedi#completions_command = "<C-Space>"
-let g:jedi#smart_auto_mappings = 0
-autocmd FileType python setlocal omnifunc=jedi#completions
-let g:jedi#completions_enabled = 1
-let g:jedi#auto_vim_configuration = 0
-
-if !exists('g:deocomplete#force_omni_input_patterns')
-        let g:deocomplete#force_omni_input_patterns = {}
-endif
-let g:deocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-" let g:jedi#completions_command = '<TAB>'
-
-
-" syntastic
-let g:syntastic_python_checkers=['python', 'flake8']
 
 " vim-airline
 let g:airline#extensions#virtualenv#enabled = 1
@@ -789,46 +621,16 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
-if !exists('g:airline_powerline_fonts')
-  let g:airline#extensions#tabline#left_sep = ' '
-  let g:airline#extensions#tabline#left_alt_sep = '|'
-  let g:airline_left_sep          = '▶'
-  let g:airline_left_alt_sep      = '»'
-  let g:airline_right_sep         = '◀'
-  let g:airline_right_alt_sep     = '«'
-  let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
-  let g:airline#extensions#readonly#symbol   = '⊘'
-  let g:airline#extensions#linecolumn#prefix = '¶'
 
-  let g:airline#extensions#paste#symbol      = 'ρ'
-  let g:airline_symbols.linenr    = '␊'
-  let g:airline_symbols.branch    = '⎇'
-  let g:airline_symbols.paste     = 'ρ'
-  let g:airline_symbols.paste     = 'Þ'
-  let g:airline_symbols.paste     = '∥'
-  let g:airline_symbols.whitespace = 'Ξ'
-else
-  let g:airline#extensions#tabline#left_sep = ''
-  let g:airline#extensions#tabline#left_alt_sep = ''
-
-  " powerline symbols
-  let g:airline_left_sep = ''
-  let g:airline_left_alt_sep = ''
-  let g:airline_right_sep = ''
-  let g:airline_right_alt_sep = ''
-  let g:airline_symbols.branch = ''
-  let g:airline_symbols.readonly = ''
-  let g:airline_symbols.linenr = ''
-endif
-
-let g:deoplete#enable_at_startup = 1
-
-" deoplete tab-complete
+" DEOPLETE
+" tab-complete
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
+let g:deoplete#enable_at_startup = 1
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+" let g:deoplete#disable_auto_complete = 1
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Disable haskell-vim omnifunc
 " let g:haskellmode_completion_ghc = 0
@@ -843,17 +645,13 @@ let g:ghcmod_type_highlight = 'ghcmodType'
 autocmd BufWritePost *.hs :GhcModCheckAndLintAsync
 let &l:statusline = '%{empty(getqflist()) ? "[No Errors]" : "[Errors Found]"}' . (empty(&l:statusline) ? &statusline : &l:statusline)
 
-let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
-
 let g:loaded_sql_completion = 0
 let g:omni_sql_no_default_maps = 1
 let g:ftplugin_sql_omni_key = '<Leader>sql'
 
 
-autocmd! BufWritePost * Neomake
+" autocmd! BufWritePost * Neomake
 
-" let g:neomake_python_enabled_makers = ['pep8', 'pylint']
-"
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1 
 
 let g:airline_theme='kalisi'
@@ -862,3 +660,38 @@ set tabstop=2 shiftwidth=2 expandtab
 
 " I don't want the docstring window to popup during completion
 autocmd FileType python setlocal completeopt-=preview
+
+let g:gruvbox_contrast_dark = "hard"
+let g:gruvbox_contrast_light = "hard"
+
+
+" NeoSnippet
+" inoremap <silent><expr><CR>  pumvisible() ? "\<C-y>" : "\<CR>"
+"let g:deoplete#ignore_sources = {}
+"let g:deoplete#ignore_sources._ = ["neosnippet"]
+
+" I want to use my tab more smarter. If we are inside a completion menu jump
+" to the next item. Otherwise check if there is any snippet to expand, if yes
+" expand it. Also if inside a snippet and we need to jump tab jumps. If none
+" of the above matches we just call our usual 'tab'.
+function! s:neosnippet_complete()
+  if pumvisible()
+    return "\<c-n>"
+  else
+    if neosnippet#expandable_or_jumpable() 
+      return "\<Plug>(neosnippet_expand_or_jump)"
+    endif
+    return "\<tab>"
+  endif
+endfunction
+
+imap <expr><c-space> <SID>neosnippet_complete()
+
+autocmd FileType python setlocal omnifunc=jedi#completions
+let g:jedi#completions_enabled = 1
+if !exists('g:deocomplete#force_omni_input_patterns')
+        let g:deocomplete#force_omni_input_patterns = {}
+endif
+let g:deocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+
+" let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
