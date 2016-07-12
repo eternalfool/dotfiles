@@ -583,11 +583,11 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-noremap <leader>b :CtrlPBuffer<CR>
-let g:ctrlp_map = '<leader>e'
-let g:ctrlp_open_new_file = 'r'
-let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+"cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+"noremap <leader>b :CtrlPBuffer<CR>
+"let g:ctrlp_map = '<leader>e'
+"let g:ctrlp_open_new_file = 'r'
+"let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 
 " IndentLine
 let g:indentLine_enabled = 1
@@ -685,7 +685,7 @@ function! s:neosnippet_complete()
   endif
 endfunction
 
-imap <expr><c-space> <SID>neosnippet_complete()
+" imap <expr><c-space> <SID>neosnippet_complete()
 
 autocmd FileType python setlocal omnifunc=jedi#completions
 let g:jedi#completions_enabled = 1
@@ -694,4 +694,32 @@ if !exists('g:deocomplete#force_omni_input_patterns')
 endif
 let g:deocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 
-" let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+
+" vundle updates fail on fish
+set shell=bash
+
+
+" TEST speed up python time
+let g:python_host_skip_check = 1
+
+
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() . "\<Space>" : "\<Space>"
+
+" Plugin key-mappings.
+imap <c-q>     <Plug>(neosnippet_expand_or_jump)
+smap <tab>     <Plug>(neosnippet_expand_or_jump)
+xmap <tab>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB>
+ \ pumvisible() ? "\<C-n>" :
+ \ neosnippet#expandable_or_jumpable() ?
+ \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
