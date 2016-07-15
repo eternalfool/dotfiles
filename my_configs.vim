@@ -404,8 +404,6 @@ nnoremap <C-k> <C-w>k
 autocmd! bufwritepost .vimrc source %
 
 " Highlight current line
-" set cursorline
-" hi CursorLine   cterm=NONE ctermbg=LightGreen ctermfg=Black
 set cursorline
 hi CursorLine term=bold cterm=bold guibg=Grey40
 
@@ -650,7 +648,10 @@ let g:omni_sql_no_default_maps = 1
 let g:ftplugin_sql_omni_key = '<Leader>sql'
 
 
-" autocmd! BufWritePost * Neomake
+" NEOMAKE
+autocmd! BufWritePost * Neomake
+let g:neomake_python = ['pyflakes']
+let g:neomake_open_list = 2
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1 
 
@@ -696,15 +697,11 @@ let g:deocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*f
 
 
 " vundle updates fail on fish
-set shell=bash
+"set shell=bash
 
 
 " TEST speed up python time
 let g:python_host_skip_check = 1
-
-
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() . "\<Space>" : "\<Space>"
 
 " Plugin key-mappings.
 imap <c-q>     <Plug>(neosnippet_expand_or_jump)
@@ -723,3 +720,5 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
+
+
