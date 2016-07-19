@@ -649,7 +649,7 @@ let g:ftplugin_sql_omni_key = '<Leader>sql'
 
 
 " NEOMAKE
-autocmd! BufWritePost * Neomake
+"autocmd! BufWritePost * Neomake
 let g:neomake_python = ['pyflakes']
 let g:neomake_open_list = 2
 
@@ -686,8 +686,6 @@ function! s:neosnippet_complete()
   endif
 endfunction
 
-" imap <expr><c-space> <SID>neosnippet_complete()
-
 autocmd FileType python setlocal omnifunc=jedi#completions
 let g:jedi#completions_enabled = 1
 if !exists('g:deocomplete#force_omni_input_patterns')
@@ -721,4 +719,28 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
+"let g:javascript_conceal_function       = "ƒ"
+"let g:javascript_conceal_null           = "ø"
+"let g:javascript_conceal_this           = "@"
+"let g:javascript_conceal_return         = "⇚"
+"let g:javascript_conceal_undefined      = "¿"
+"let g:javascript_conceal_NaN            = "ℕ"
+"let g:javascript_conceal_prototype      = "¶"
+"let g:javascript_conceal_static         = "•"
+"let g:javascript_conceal_super          = "Ω"
+"let g:javascript_conceal_arrow_function = "⇒"
 
+
+function! neomake#makers#ft#javascript#EnabledMakers()
+    return ['jshint', 'jscs', 'eslint']
+endfunction
+
+function! neomake#makers#ft#javascript#jshint()
+    return {
+        \ 'args': ['--verbose'],
+        \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+        \ }
+endfunction
+
+" Make it so that a curly brace automatically inserts an indented line
+inoremap {<CR> {<CR>}<Esc>O<BS><Tab>

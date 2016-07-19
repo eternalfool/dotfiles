@@ -14,27 +14,45 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 
-" Plugin 'scrooloose/nerdTree'
-
-" Plugin 'vim-airline/vim-airline'
-" Plugin 'vim-airline/vim-airline-themes'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'Raimondi/delimitMate'
+" Look and Feel
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'groenewege/vim-less'
+Plugin 'morhetz/gruvbox'
 Plugin 'yggdroot/indentline'
-" Plugin 'easymotion/vim-easymotion'
+
+" Code completion
+Plugin 'Raimondi/delimitMate'
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'Shougo/deoplete.nvim'
-Plugin 'groenewege/vim-less'
+Plugin 'scrooloose/nerdcommenter'
+
+" Syntax checking
+Plugin 'neomake/neomake'
+
+" File movement
+Plugin 'ctrlpvim/ctrlp.vim'
+" Plugin 'easymotion/vim-easymotion'
+
+" Haskell
 "Plugin 'ujihisa/neco-ghc'
 "Plugin 'Shougo/vimproc.vim'
 "Plugin 'eagletmt/ghcmod-vim'
-" Plugin 'scrooloose/syntastic'
 "Plugin 'dag/vim2hs'
+
+" Python
 Plugin 'zchee/deoplete-jedi'
-Plugin 'neomake/neomake'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'morhetz/gruvbox'
+
+" Javascript
+Plugin 'moll/vim-node'
+Plugin 'pangloss/vim-javascript'
+Plugin 'carlitux/deoplete-ternjs'
+Plugin 'jelera/vim-javascript-syntax'
+
+
+Plugin 'vim-scripts/excel.vim'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
