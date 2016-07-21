@@ -19,7 +19,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'groenewege/vim-less'
 Plugin 'morhetz/gruvbox'
-Plugin 'yggdroot/indentline'
+"Plugin 'yggdroot/indentline'
 
 " Code completion
 Plugin 'Raimondi/delimitMate'
