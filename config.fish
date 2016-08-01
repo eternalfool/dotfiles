@@ -16,8 +16,9 @@ alias tailf='less -W +F'
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
 alias top="htop"
-alias sshto="/data/svn/workspace/tools/ssht"
 alias install='sudo apt-get install'
 alias update='sudo apt-get update'
 
@@ -38,10 +39,12 @@ alias -='cd -'
 
 alias k='ps aux | grep echo $argv | grep -v grep | awk \'{print $2}\'  | xargs kill -9'
 
-alias st='git status'
 alias dw='cd /home/shashwatsuman/Downloads/'
 alias pull='git pull'
 alias add='git add'
+alias st='git status'
+alias revert='git checkout HEAD'
+alias gd='git diff'
 alias fixres1080='xrandr --addmode DP1 1920x1080_60.00'
 alias co='cp'
 alias s='sudo'
@@ -52,3 +55,10 @@ alias d='cd ~/Downloads'
 alias jn='jupyter notebook'
 alias loc="find . -name '*.java' | xargs wc -l"
 if test -f /home/shashwatsuman/.autojump/share/autojump/autojump.fish; . /home/shashwatsuman/.autojump/share/autojump/autojump.fish; end
+alias logs='cd /opt/tomcat/logs/'
+alias ms='cd /home/shashwatsuman/workspace/golden-gate-middleware/MerchantService'
+alias fixnet='sudo service network-manager restart'
+alias pom='vi /home/shashwatsuman/workspace/golden-gate-middleware/MerchantService/pom.xml'
+alias src='cd /home/shashwatsuman/workspace/golden-gate-middleware/MerchantService/src/main/java/com/paytm/merchant'
+alias prod42='ssh michael@52.77.121.42'
+alias log='tailf /opt/tomcat/logs/MiddlewareService.log'
