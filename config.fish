@@ -21,6 +21,7 @@ alias ......="cd ../../../../.."
 alias top="htop"
 alias install='sudo apt-get install'
 alias update='sudo apt-get update'
+alias upgrade='sudo apt-get upgrade'
 
 ## Colorize the grep command output for ease of use (good for log files)##
 alias grep='grep --color=auto'
@@ -40,11 +41,13 @@ alias -='cd -'
 alias k='ps aux | grep echo $argv | grep -v grep | awk \'{print $2}\'  | xargs kill -9'
 
 alias dw='cd /home/shashwatsuman/Downloads/'
-alias pull='git pull'
+alias gp='git pull'
 alias add='git add'
-alias st='git status'
+alias st='git status -s'
 alias revert='git checkout HEAD'
 alias gd='git diff'
+alias gitlog='git log -p'
+alias gb='git branch'
 alias fixres1080='xrandr --addmode DP1 1920x1080_60.00'
 alias co='cp'
 alias s='sudo'
@@ -62,3 +65,18 @@ alias pom='vi /home/shashwatsuman/workspace/golden-gate-middleware/MerchantServi
 alias src='cd /home/shashwatsuman/workspace/golden-gate-middleware/MerchantService/src/main/java/com/paytm/merchant'
 alias prod42='ssh michael@52.77.121.42'
 alias log='tailf /opt/tomcat/logs/MiddlewareService.log'
+alias testlog='tailf /opt/tomcat/logs/MiddlewareServiceJUnit.log'
+alias work='cd /home/shashwatsuman/workspace'
+alias log4j='vi /home/shashwatsuman/workspace/golden-gate-middleware/MerchantService/src/main/resources/log4j.properties'
+alias diff='git diff HEAD | python /home/shashwatsuman/workspace/golden-gate-middleware/tools/diff2html-v1.0/diff2html.py > /tmp/diff; google-chrome /tmp/diff'
+alias tt='vi /tmp/tt'
+alias sql='cd /home/shashwatsuman/workspace/golden-gate-middleware/SQL_Files'
+alias locate='locate -i'
+alias fixb='sudo /etc/init.d/bluetooth restart'
+
+set -x CATALINA_HOME /opt/tomcat/
+
+alias mvs='mvn clean install -e -P  dev'
+alias m='mysql -umichael -pPaytm@123 test_db'
+alias hk='/home/shashwatsuman/Documents/Scala Assignment/HackerrankInScala2/src'
+alias run='python /home/shashwatsuman/Softwares/Utility-Scripts/run_jvm.py'

@@ -743,4 +743,8 @@ function! neomake#makers#ft#javascript#jshint()
 endfunction
 
 " Make it so that a curly brace automatically inserts an indented line
-inoremap {<CR> {<CR>}<Esc>O<BS><Tab>
+"inoremap {<CR> {<CR>}<Esc>O<BS><Tab>
+
+" Open help in vertical mode
+autocmd FileType help wincmd L
+

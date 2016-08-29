@@ -19,6 +19,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'groenewege/vim-less'
 Plugin 'morhetz/gruvbox'
+Plugin 'terryma/vim-smooth-scroll'
 "Plugin 'yggdroot/indentline'
 
 " Code completion
@@ -45,13 +46,13 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'zchee/deoplete-jedi'
 
 " Javascript
-Plugin 'moll/vim-node'
-Plugin 'pangloss/vim-javascript'
-Plugin 'carlitux/deoplete-ternjs'
-Plugin 'jelera/vim-javascript-syntax'
+"Plugin 'moll/vim-node'
+"Plugin 'pangloss/vim-javascript'
+"Plugin 'carlitux/deoplete-ternjs'
+"Plugin 'jelera/vim-javascript-syntax'
 
 
-Plugin 'vim-scripts/excel.vim'
+"Plugin 'vim-scripts/excel.vim'
 
 
 " All of your Plugins must be added before the following line
