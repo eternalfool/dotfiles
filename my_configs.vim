@@ -460,7 +460,7 @@ nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
 
 " select all
-map <C-a> ggVG
+map <C-b> ggVG
 
 "  Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
@@ -719,16 +719,16 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
-"let g:javascript_conceal_function       = "ƒ"
-"let g:javascript_conceal_null           = "ø"
-"let g:javascript_conceal_this           = "@"
-"let g:javascript_conceal_return         = "⇚"
-"let g:javascript_conceal_undefined      = "¿"
-"let g:javascript_conceal_NaN            = "ℕ"
-"let g:javascript_conceal_prototype      = "¶"
-"let g:javascript_conceal_static         = "•"
-"let g:javascript_conceal_super          = "Ω"
-"let g:javascript_conceal_arrow_function = "⇒"
+let g:javascript_conceal_function       = "ƒ"
+let g:javascript_conceal_null           = "ø"
+let g:javascript_conceal_this           = "@"
+let g:javascript_conceal_return         = "⇚"
+let g:javascript_conceal_undefined      = "¿"
+let g:javascript_conceal_NaN            = "ℕ"
+let g:javascript_conceal_prototype      = "¶"
+let g:javascript_conceal_static         = "•"
+let g:javascript_conceal_super          = "Ω"
+let g:javascript_conceal_arrow_function = "⇒"
 
 
 function! neomake#makers#ft#javascript#EnabledMakers()

@@ -20,6 +20,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'groenewege/vim-less'
 Plugin 'morhetz/gruvbox'
 Plugin 'terryma/vim-smooth-scroll'
+Plugin 'tmhedberg/SimpylFold'
 "Plugin 'yggdroot/indentline'
 
 " Code completion
@@ -28,6 +29,7 @@ Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'scrooloose/nerdcommenter'
+
 
 " Syntax checking
 Plugin 'neomake/neomake'

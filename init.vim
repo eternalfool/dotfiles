@@ -1,2 +1,2 @@
-source ~/nvim/vundle.vim
-source ~/nvim/my_configs.vim
+source ~/dotfiles/vundle.vim
+source ~/dotfiles/my_configs.vim
