@@ -747,4 +747,5 @@ endfunction
 
 " Open help in vertical mode
 autocmd FileType help wincmd L
+autocmd! GUIEnter * set vb t_vb=
 
