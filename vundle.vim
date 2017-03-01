@@ -32,7 +32,9 @@ Plugin 'scrooloose/nerdcommenter'
 
 
 " Syntax checking
-Plugin 'neomake/neomake'
+" Plugin 'neomake/neomake'
+Plugin 'w0rp/ale'
+
 
 " File movement
 Plugin 'ctrlpvim/ctrlp.vim'

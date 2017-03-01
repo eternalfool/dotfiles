@@ -143,6 +143,9 @@ set foldlevel=99
 " Enable folding with the spacebar
 nnoremap <space> za
 
+nnoremap [ <C-E>
+nnoremap ] <C-Y>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -360,10 +363,10 @@ set mouse=r
 set cmdheight=2
 
 "" disable arrow keys in normal mode
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+"noremap <Up> <NOP>
+"noremap <Down> <NOP>
+"noremap <Left> <NOP>
+"noremap <Right> <NOP>
 
 " map : to ;
 nnoremap ; :
@@ -430,7 +433,8 @@ function! ToggleVExplorer()
       let t:expl_buf_num = bufnr("%")
   endif
 endfunction
-map <silent> <C-E> :call ToggleVExplorer()<CR>
+" map <silent> <C-E> :call ToggleVExplorer()<CR>
+" map <C-E> :call ToggleVExplorer()<CR>
 
 " Hit enter in the file browser to open the selected
 " file with :vsplit to the right of the browser.
@@ -504,13 +508,6 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 set foldcolumn=0
 set ft=messages
 
-" move from the neovim terminal window to somewhere else
-tnoremap <C-h> <C-\><C-n><C-w>h
-tnoremap <C-j> <C-\><C-n><C-w>j
-tnoremap <C-k> <C-\><C-n><C-w>k
-tnoremap <C-l> <C-\><C-n><C-w>l
-
-
 nnoremap <leader>t :vsplit \| terminal<CR>
 
 set splitright
@@ -548,7 +545,7 @@ let g:airline_theme = 'wombat'
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 " let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
+" let g:airline#extensions#tagbar#enabled = 1
 
 "" Tabs
 nnoremap <Tab> gt
@@ -650,12 +647,23 @@ let g:ftplugin_sql_omni_key = '<Leader>sql'
 
 " NEOMAKE
 "autocmd! BufWritePost * Neomake
-let g:neomake_python = ['pyflakes']
-let g:neomake_open_list = 2
+"let g:neomake_python = ['pyflakes']
+"let g:neomake_open_list = 2
 
+"function! neomake#makers#ft#javascript#EnabledMakers()
+    "return ['jshint', 'jscs', 'eslint']
+"endfunction
+
+"function! neomake#makers#ft#javascript#jshint()
+    "return {
+        "\ 'args': ['--verbose'],
+        "\ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+        "\ }
+"endfunction
+"
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1 
 
-let g:airline_theme='kalisi'
+" let g:airline_theme='kalisi'
 
 set tabstop=2 shiftwidth=2 expandtab
 
@@ -731,16 +739,6 @@ let g:javascript_conceal_super          = "Ω"
 let g:javascript_conceal_arrow_function = "⇒"
 
 
-function! neomake#makers#ft#javascript#EnabledMakers()
-    return ['jshint', 'jscs', 'eslint']
-endfunction
-
-function! neomake#makers#ft#javascript#jshint()
-    return {
-        \ 'args': ['--verbose'],
-        \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
-        \ }
-endfunction
 
 " Make it so that a curly brace automatically inserts an indented line
 "inoremap {<CR> {<CR>}<Esc>O<BS><Tab>
@@ -748,4 +746,10 @@ endfunction
 " Open help in vertical mode
 autocmd FileType help wincmd L
 autocmd! GUIEnter * set vb t_vb=
+
+command! WQ :wq
+command! Wq :wq
+command! W :w
+
+set path+=**
 
