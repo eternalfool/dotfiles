@@ -257,7 +257,7 @@ map <C-l> <C-W>l
 set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ %{ALEGetStatusLine()}CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -470,8 +470,8 @@ map <C-b> ggVG
 au VimResized * exe "normal! \<c-w>="
 
 ""  Insert blank lines without going into insert mode
-nmap t o<ESC>k
-nmap T O<ESC>j
+" nmap t o<ESC>k
+" nmap T O<ESC>j
 
 " Copy paste configurations
 vmap <C-c> "+yi<ESC>
@@ -752,4 +752,7 @@ command! Wq :wq
 command! W :w
 
 set path+=**
+
+"" ALE
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 

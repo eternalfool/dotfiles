@@ -34,7 +34,7 @@ Plugin 'scrooloose/nerdcommenter'
 " Syntax checking
 " Plugin 'neomake/neomake'
 Plugin 'w0rp/ale'
-
+Plugin 'tpope/vim-obsession'
 
 " File movement
 Plugin 'ctrlpvim/ctrlp.vim'
