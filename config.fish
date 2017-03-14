@@ -5,7 +5,7 @@ alias fixsvn 'find . -name ".svn" -type d -exec rm -rf {} \;'
 alias tom 'ps aux | grep tomcat'
 alias fishrc 'vi ~/.config/fish/config.fish'
 alias fixres='xrandr --newmode "1368x768_60.00"   85.25  1368 1440 1576 1784  768 771 781 798 -hsync +vsync; xrandr --addmode DP1 1368x768_60.00'
-alias fishsource='source ~/.config/fish/config.fish'
+alias fs='source ~/.config/fish/config.fish'
 alias eclipse='./home/shashwat/Applications/eclipse/eclipse'
 set fish_greeting ""
 alias vimrc='vi ~/Softwares/dotfiles/my_configs.vim'
@@ -39,7 +39,7 @@ alias -='cd -'
 
 alias k='ps aux | grep echo $argv | grep -v grep | awk \'{print $2}\'  | xargs kill -9'
 
-alias dw='cd /home/shashwatsuman/Downloads/'
+alias dw='/Users/shashwat/Downloads/'
 alias gp='git pull'
 alias add='git add'
 alias st='git status -s'
@@ -510,7 +510,8 @@ alias cp43-staging="ssh -i ~/Documents/compute_team_pri compute_team@10.140.215.
 alias alpha="ssh ubuntu@10.140.216.37"
 alias e="ssh shashwat@10.140.214.70"
 alias rt=" bash /etc/vpnc/vpn_connect_map.sh"
-alias devstack="ssh ubuntu@52.221.239.94"
+alias devstack="ssh ubuntu@52.221.213.44"
+alias packstack="ssh centos@@10.140.216.37"
 
 alias gc='git clone'
 
