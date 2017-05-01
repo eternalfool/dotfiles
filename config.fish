@@ -43,12 +43,16 @@ alias revert='git checkout HEAD'
 alias gd='git diff'
 alias gitlog='git log -p'
 alias gb='git branch'
+alias gl='git log --pretty=format:"%h %s" --graph'
+alias gv='git remote -v'
+alias gc='git clone'
 alias fixres1080='xrandr --addmode DP1 1920x1080_60.00'
 alias co='cp'
 alias s='sudo'
 alias g='ghci'
 alias ini='touch __init__.py'
 alias d='cd ~/Downloads'
+alias pd='vi ~/.pdbrc.py'
 
 alias jn='jupyter notebook'
 alias loc="find . -name '*.java' | xargs wc -l"
@@ -65,6 +69,7 @@ alias fixnet='sudo service network-manager restart'
 alias log='tailf /opt/tomcat/logs/MiddlewareService.log'
 alias testlog='tailf /opt/tomcat/logs/MiddlewareServiceJUnit.log'
 alias tt='vi /tmp/tt'
+alias t='tmux'
 alias locate='locate -i'
 alias fixb='sudo /etc/init.d/bluetooth restart'
 
@@ -90,7 +95,6 @@ alias e="ssh shashwat@10.140.214.70"
 alias rt=" bash /etc/vpnc/vpn_connect_map.sh"
 alias devstack="ssh ubuntu@52.221.213.44"
 
-alias gc='git clone'
 
 alias copy="tr -d '\n' | pbcopy"
 alias r="realpath"

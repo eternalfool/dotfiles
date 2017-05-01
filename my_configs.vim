@@ -433,8 +433,8 @@ function! ToggleVExplorer()
     let t:expl_buf_num = bufnr("%")
   endif
 endfunction
-" map <silent> <C-E> :call ToggleVExplorer()<CR>
-" map <C-E> :call ToggleVExplorer()<CR>
+map <silent> <C-E> :call ToggleVExplorer()<CR>
+map <C-E> :call ToggleVExplorer()<CR>
 
 " Hit enter in the file browser to open the selected
 " file with :vsplit to the right of the browser.
