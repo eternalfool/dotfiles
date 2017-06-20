@@ -13,7 +13,6 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
-alias top="htop"
 alias install='sudo apt-get install'
 alias update='sudo apt-get update'
 alias upgrade='sudo apt-get upgrade'
@@ -101,7 +100,7 @@ alias r="realpath"
 alias vpn='sh /private/etc/vpnc/mac_jiovpn'
 
 alias mysql='/usr/local/mysql/bin/mysql -uroot'
-alias mysqlstart='sudo /usr/local/mysql/support-files/mysql.server start'
+alias ms='sudo /usr/local/mysql/support-files/mysql.server start'
 
 alias updatedb='sudo /usr/libexec/locate.updatedb'
 alias ubuntuvm='ssh ubuntu@10.140.213.177'
@@ -110,3 +109,4 @@ alias ubuntuvm='ssh ubuntu@10.140.213.177'
 if test -e ~/.config/fish/reliance
     . ~/.config/fish/reliance
 end
+alias rel='vi ~/.config/fish/reliance'

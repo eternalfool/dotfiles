@@ -280,12 +280,12 @@ if has("mac") || has("macunix")
 endif
 
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
+" func! DeleteTrailingWS()
+"  exe "normal mz"
+""  %s/\s\+$//ge
+"  exe "normal `z"
+"endfunc
+"autocmd BufWrite *.py :call DeleteTrailingWS()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -433,8 +433,8 @@ function! ToggleVExplorer()
     let t:expl_buf_num = bufnr("%")
   endif
 endfunction
-map <silent> <C-E> :call ToggleVExplorer()<CR>
-map <C-E> :call ToggleVExplorer()<CR>
+"map <silent> <C-E> :call ToggleVExplorer()<CR>
+"map <C-E> :call ToggleVExplorer()<CR>
 
 " Hit enter in the file browser to open the selected
 " file with :vsplit to the right of the browser.
@@ -529,7 +529,7 @@ noremap <Leader>i :set list!<CR>
 map <f5> :w <CR>!clear <CR>:!python % <CR>
 
 " Remove All the Trailing Whitespaces
-nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<cr>
+" nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<cr>
 
 " http://stackoverflow.com/questions/18948491/running-python-code-in-vim
 nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
