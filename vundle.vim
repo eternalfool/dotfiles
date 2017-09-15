@@ -20,13 +20,13 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'groenewege/vim-less'
 Plugin 'morhetz/gruvbox'
 Plugin 'terryma/vim-smooth-scroll'
-Plugin 'tmhedberg/SimpylFold'
+" Plugin 'tmhedberg/SimpylFold'
 "Plugin 'yggdroot/indentline'
 
 " Code completion
 Plugin 'Raimondi/delimitMate'
-Plugin 'Shougo/neosnippet'
-Plugin 'Shougo/neosnippet-snippets'
+" Plugin 'Shougo/neosnippet'
+" Plugin 'Shougo/neosnippet-snippets'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'scrooloose/nerdcommenter'
 
@@ -54,6 +54,8 @@ Plugin 'zchee/deoplete-jedi'
 "Plugin 'pangloss/vim-javascript'
 "Plugin 'carlitux/deoplete-ternjs'
 "Plugin 'jelera/vim-javascript-syntax'
+" Plugin 'Quramy/tsuquyomi'
+" Plugin 'mhartington/nvim-typescript'
 
 
 "Plugin 'vim-scripts/excel.vim'

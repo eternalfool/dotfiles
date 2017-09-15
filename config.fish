@@ -1,4 +1,5 @@
 alias ll 'ls -alFrth'
+alias l 'ls -alFrth'
 alias la 'ls -A'
 alias l 'ls -CF'
 alias fishrc 'vi ~/.config/fish/config.fish'
