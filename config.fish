@@ -1,7 +1,9 @@
 alias ll 'ls -alFrth'
+alias kk 'ls -alFrth'
 alias l 'ls -alFrth'
 alias la 'ls -A'
 alias l 'ls -CF'
+alias p 'pwd'
 alias fishrc 'vi ~/.config/fish/config.fish'
 alias fs='source ~/.config/fish/config.fish'
 set fish_greeting ""
@@ -77,7 +79,6 @@ set -x CATALINA_HOME /opt/tomcat/
 
 alias x='xset r rate 150 30'
 alias hosts='vi /etc/hosts'
-alias aws='ssh ubuntu@35.165.175.128'
 alias vpn='sh /etc/vpnc/vpnconnect.sh'
 
 
@@ -111,3 +112,14 @@ if test -e ~/.config/fish/reliance
     . ~/.config/fish/reliance
 end
 alias rel='vi ~/.config/fish/reliance'
+alias vnf='cd /Users/shashwat/PycharmProjects/gitblit/VNF_Catalog_Release_Version_Manager/rtJIO_VNF_Catalog_Release_Manager'
+
+alias pi='ping 8.8.8.8'
+alias slack='vi /Applications/Slack.app/Contents/Resources/app.asar.unpacked/src/static/index.js'
+
+set -U fish_user_paths ~/anaconda3/bin $fish_user_paths
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/shashwat/google-cloud-sdk/path.fish.inc' ]; if type source > /dev/null; source '/Users/shashwat/google-cloud-sdk/path.fish.inc'; else; . '/Users/shashwat/google-cloud-sdk/path.fish.inc'; end; end
+
+alias aws='/Users/shashwat/anaconda3/bin/aws'
