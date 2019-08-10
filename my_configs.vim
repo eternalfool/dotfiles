@@ -43,7 +43,8 @@
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Help in copy paste
-set clipboard=unnamed
+let g:clipboard = {'copy': {'+': 'pbcopy', '*': 'pbcopy'}, 'paste': {'+': 'pbpaste', '*': 'pbpaste'}, 'name': 'pbcopy', 'cache_enabled': 0}
+set clipboard=unnamedplus
 
 " Sets how many lines of history VIM has to remember
 set history=500
@@ -222,73 +223,6 @@ vnoremap <silent> # :call VisualSelection('b', '')<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around, tabs, windows and buffers
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Treat long lines as break lines (useful when moving around in them)
-nnoremap j gj
-nnoremap k gk
-
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-" map <space> /
-" map <c-space> ?
-
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
-
-" Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
-" Return to last edit position when opening files (You want this!)
-" autocmd BufReadPost *
-      \ if line("'\"") > 0 && line("'\"") <= line("$") |
-      \   exe "normal! g`\"" |
-      \ endif
-" Remember info about open buffers on close
-set viminfo^=%
-
-
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
-" Always show the status line
-set laststatus=2
-
-" Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ %{ALEGetStatusLine()}CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remap VIM 0 to first non-blank character
-map 0 ^
-
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
-endif
-
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
-" func! DeleteTrailingWS()
-"  exe "normal mz"
-""  %s/\s\+$//ge
-"  exe "normal `z"
-"endfunc
-"autocmd BufWrite *.py :call DeleteTrailingWS()
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CmdLine(str)
@@ -372,7 +306,7 @@ set cmdheight=2
 nnoremap ; :
 
 " save when focus is lost
-au FocusLost * :wa
+" au FocusLost * :wa
 
 " reselect the text that was just pasted
 nnoremap <leader>v V`]
@@ -433,8 +367,8 @@ function! ToggleVExplorer()
     let t:expl_buf_num = bufnr("%")
   endif
 endfunction
-"map <silent> <C-E> :call ToggleVExplorer()<CR>
-"map <C-E> :call ToggleVExplorer()<CR>
+" map <silent> <C-E> :call ToggleVExplorer()<CR>
+" map <C-E> :call ToggleVExplorer()<CR>
 
 " Hit enter in the file browser to open the selected
 " file with :vsplit to the right of the browser.
@@ -512,7 +446,11 @@ nnoremap <leader>t :vsplit \| terminal<CR>
 
 set splitright
 
-set mouse-=a
+" set mouse-=a
+set mouse=a
+map <ScrollWheelUp> <C-Y>
+map <ScrollWheelDown> <C-E>
+
 
 
 " Reselect visual block after indent/outdent
@@ -616,136 +554,7 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
-
-" DEOPLETE
-" tab-complete
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-let g:deoplete#enable_at_startup = 1
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
-" let g:deoplete#disable_auto_complete = 1
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
-" Disable haskell-vim omnifunc
-" let g:haskellmode_completion_ghc = 0
-" autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-let g:necoghc_enable_detailed_browse = 1
-
-let $PATH = $PATH . ':' . expand('~/.cabal/bin')
-
-hi ghcmodType ctermbg=yellow
-let g:ghcmod_type_highlight = 'ghcmodType'
-
-autocmd BufWritePost *.hs :GhcModCheckAndLintAsync
-let &l:statusline = '%{empty(getqflist()) ? "[No Errors]" : "[Errors Found]"}' . (empty(&l:statusline) ? &statusline : &l:statusline)
-
-let g:loaded_sql_completion = 0
-let g:omni_sql_no_default_maps = 1
-let g:ftplugin_sql_omni_key = '<Leader>sql'
-
-
-" NEOMAKE
-"autocmd! BufWritePost * Neomake
-"let g:neomake_python = ['pyflakes']
-"let g:neomake_open_list = 2
-
-"function! neomake#makers#ft#javascript#EnabledMakers()
-"return ['jshint', 'jscs', 'eslint']
-"endfunction
-
-"function! neomake#makers#ft#javascript#jshint()
-"return {
-"\ 'args': ['--verbose'],
-"\ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
-"\ }
-"endfunction
-"
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1 
-
-" let g:airline_theme='kalisi'
-
 set tabstop=2 shiftwidth=2 expandtab
-
-" I don't want the docstring window to popup during completion
-autocmd FileType python setlocal completeopt-=preview
-
-let g:gruvbox_contrast_dark = "hard"
-let g:gruvbox_contrast_light = "hard"
-
-
-" NeoSnippet
-" inoremap <silent><expr><CR>  pumvisible() ? "\<C-y>" : "\<CR>"
-"let g:deoplete#ignore_sources = {}
-"let g:deoplete#ignore_sources._ = ["neosnippet"]
-
-" I want to use my tab more smarter. If we are inside a completion menu jump
-" to the next item. Otherwise check if there is any snippet to expand, if yes
-" expand it. Also if inside a snippet and we need to jump tab jumps. If none
-" of the above matches we just call our usual 'tab'.
-function! s:neosnippet_complete()
-  if pumvisible()
-    return "\<c-n>"
-  else
-    if neosnippet#expandable_or_jumpable() 
-      return "\<Plug>(neosnippet_expand_or_jump)"
-    endif
-    return "\<tab>"
-  endif
-endfunction
-
-autocmd FileType python setlocal omnifunc=jedi#completions
-let g:jedi#completions_enabled = 1
-if !exists('g:deocomplete#force_omni_input_patterns')
-  let g:deocomplete#force_omni_input_patterns = {}
-endif
-let g:deocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-
-
-" vundle updates fail on fish
-"set shell=bash
-
-
-" TEST speed up python time
-let g:python_host_skip_check = 1
-
-" Plugin key-mappings.
-imap <c-q>     <Plug>(neosnippet_expand_or_jump)
-smap <tab>     <Plug>(neosnippet_expand_or_jump)
-xmap <tab>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ neosnippet#expandable_or_jumpable() ?
-      \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-
-let g:javascript_conceal_function       = "ƒ"
-let g:javascript_conceal_null           = "ø"
-let g:javascript_conceal_this           = "@"
-let g:javascript_conceal_return         = "⇚"
-let g:javascript_conceal_undefined      = "¿"
-let g:javascript_conceal_NaN            = "ℕ"
-let g:javascript_conceal_prototype      = "¶"
-let g:javascript_conceal_static         = "•"
-let g:javascript_conceal_super          = "Ω"
-let g:javascript_conceal_arrow_function = "⇒"
-
-
-
-" Make it so that a curly brace automatically inserts an indented line
-"inoremap {<CR> {<CR>}<Esc>O<BS><Tab>
-
-" Open help in vertical mode
-autocmd FileType help wincmd L
-autocmd! GUIEnter * set vb t_vb=
 
 command! WQ :wq
 command! Wq :wq
@@ -753,8 +562,26 @@ command! W :w
 
 set path+=**
 
-"" ALE
-let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 
-" nnoremap + :bnext<CR>
-nnoremap - :bprevious<CR>
+" suppress the annoying 'match x of y', 'The only match' and 'Pattern not
+" found' messages
+set shortmess+=c
+
+" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+inoremap <c-c> <ESC>
+
+" When the <Enter> key is pressed while the popup menu is visible, it only
+" hides the menu. Use this mapping to close the menu and also start a new
+" line.
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
+" Use <TAB> to select the popup menu:
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+set completeopt=noinsert,menuone,noselect
+
+let g:ruby_path="/Users/admin/.rvm/rubies/ruby-2.4.0/bin/ruby"
+
+let g:deoplete#enable_at_startup = 1
+

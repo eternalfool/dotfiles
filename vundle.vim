@@ -24,11 +24,12 @@ Plugin 'terryma/vim-smooth-scroll'
 "Plugin 'yggdroot/indentline'
 
 " Code completion
-Plugin 'Raimondi/delimitMate'
+" Plugin 'Raimondi/delimitMate'
 " Plugin 'Shougo/neosnippet'
 " Plugin 'Shougo/neosnippet-snippets'
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'scrooloose/nerdcommenter'
+" Plugin 'Shougo/deoplete.nvim'
+" Plugin 'zchee/deoplete-clang'
+" Plugin 'scrooloose/nerdcommenter'
 
 
 " Syntax checking
@@ -39,7 +40,11 @@ Plugin 'tpope/vim-obsession'
 " File movement
 Plugin 'ctrlpvim/ctrlp.vim'
 " Plugin 'easymotion/vim-easymotion'
+" assuming you're using vim-plug: https://github.com/junegunn/vim-plug
+" Plugin 'roxma/nvim-yarp'
 
+" IMPORTANTE: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
 " Haskell
 "Plugin 'ujihisa/neco-ghc'
 "Plugin 'Shougo/vimproc.vim'
@@ -47,7 +52,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 "Plugin 'dag/vim2hs'
 
 " Python
-Plugin 'zchee/deoplete-jedi'
+" Plugin 'zchee/deoplete-jedi'
 
 " Javascript
 "Plugin 'moll/vim-node'
@@ -59,6 +64,16 @@ Plugin 'zchee/deoplete-jedi'
 
 
 "Plugin 'vim-scripts/excel.vim'
+
+
+" Rails
+" Plugin 'tpope/vim-rails'
+" Plugin 'javier-lopez/sml.vim'
+Plugin 'Raimondi/delimitMate'
+" Plugin 'vim-ruby/vim-ruby'
+
+
+
 
 
 " All of your Plugins must be added before the following line
